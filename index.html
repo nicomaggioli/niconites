@@ -11,7 +11,8 @@
 <body>
   <div class="app">
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
+      <button class="mobile-close" id="mobileClose" aria-label="Close menu">X</button>
       <div class="logo">
         <span class="logo-mark">NICO</span>
         <span class="logo-text">SITES</span>
@@ -68,11 +69,18 @@
         </div>
         <div class="header-actions">
           <button class="btn btn-primary" id="scrapeBtn">
-            <span></span> Find New Leads
+            Find New Leads
           </button>
           <div class="user-menu">
             <span>Nico</span>
           </div>
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
         </div>
       </header>
 

@@ -888,6 +888,45 @@ body {
   border-top: 1px solid var(--border);
 }
 
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobile-menu-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile Sidebar */
+.sidebar.mobile-open {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  width: 100%;
+  height: 100vh;
+}
+
+.mobile-close {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--ink);
+  font-size: 1.5rem;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+}
+
 /* Mobile */
 @media (max-width: 1024px) {
   .app {
@@ -895,6 +934,30 @@ body {
   }
   
   .sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .sidebar.mobile-open {
+    display: flex;
+  }
+  
+  .mobile-close {
+    display: block;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .header-search {
     display: none;
   }
   
@@ -932,7 +995,73 @@ body {
     grid-template-columns: 1fr;
   }
   
-  .header-search input {
-    width: 200px;
+  .header {
+    padding: 1rem;
+  }
+  
+  .header-actions {
+    gap: 0.5rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+  
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .section-card {
+    padding: 1rem;
+  }
+  
+  .lead-info {
+    padding: 1rem;
+  }
+  
+  .modal-content {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .modal-actions .btn {
+    width: 100%;
+  }
+  
+  .email-composer {
+    padding: 1rem;
+  }
+  
+  .composer-actions {
+    flex-direction: column;
+  }
+  
+  .composer-actions .btn {
+    width: 100%;
+  }
+  
+  .user-menu {
+    display: none;
   }
 }

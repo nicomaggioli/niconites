@@ -574,5 +574,34 @@ document.getElementById('scrapeBtn').addEventListener('click', async () => {
   alert('Scraping complete! Check console for results.');
 });
 
+// Mobile menu toggle
+function setupMobileMenu() {
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileClose = document.getElementById('mobileClose');
+  const sidebar = document.getElementById('sidebar');
+  
+  if (mobileMenuBtn && sidebar) {
+    mobileMenuBtn.addEventListener('click', () => {
+      sidebar.classList.add('mobile-open');
+    });
+  }
+  
+  if (mobileClose && sidebar) {
+    mobileClose.addEventListener('click', () => {
+      sidebar.classList.remove('mobile-open');
+    });
+  }
+  
+  // Close menu when clicking a nav item on mobile
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        sidebar.classList.remove('mobile-open');
+      }
+    });
+  });
+}
+
 // Initialize app
 init();
+setupMobileMenu();
