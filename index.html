@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nico Nites | Website Redesign Agency Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-mark">NICO</span>
+        <span class="logo-text">NITES</span>
+      </div>
+      
+      <nav class="nav">
+        <a href="#dashboard" class="nav-item active" data-view="dashboard">
+          <span class="nav-icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#leads" class="nav-item" data-view="leads">
+          <span class="nav-icon">🎯</span>
+          <span>Leads</span>
+          <span class="badge">12</span>
+        </a>
+        <a href="#clients" class="nav-item" data-view="clients">
+          <span class="nav-icon">👥</span>
+          <span>Clients</span>
+        </a>
+        <a href="#builder" class="nav-item" data-view="builder">
+          <span class="nav-icon">🛠️</span>
+          <span>Site Builder</span>
+        </a>
+        <a href="#outreach" class="nav-item" data-view="outreach">
+          <span class="nav-icon">📧</span>
+          <span>Outreach</span>
+        </a>
+        <a href="#revenue" class="nav-item" data-view="revenue">
+          <span class="nav-icon">💰</span>
+          <span>Revenue</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="stats-mini">
+          <div class="stat">
+            <span class="stat-value">$0</span>
+            <span class="stat-label">MRR</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">0</span>
+            <span class="stat-label">Clients</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-search">
+          <input type="text" placeholder="Search leads, clients, or sites..." id="searchInput">
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary" id="scrapeBtn">
+            <span>🔍</span> Find New Leads
+          </button>
+          <div class="user-menu">
+            <span>Nico</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content">
+        <!-- Dashboard View -->
+        <div class="view active" id="dashboard-view">
+          <div class="page-header">
+            <h1>Dashboard</h1>
+            <p class="subtitle">Overview of your agency performance</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-info">
+                <span class="stat-number">12</span>
+                <span class="stat-label">New Leads</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🔨</div>
+              <div class="stat-info">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Demo Sites Built</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📧</div>
+              <div class="stat-info">
+                <span class="stat-number">8</span>
+                <span class="stat-label">Emails Sent</span>
+              </div>
+            </div>
+            <div class="stat-card highlight">
+              <div class="stat-icon">💰</div>
+              <div class="stat-info">
+                <span class="stat-number">$0</span>
+                <span class="stat-label">Revenue</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-sections">
+            <div class="section-card">
+              <div class="section-header">
+                <h2>🔥 Hot Leads</h2>
+                <a href="#leads" class="link">View All</a>
+              </div>
+              <div class="leads-preview" id="hotLeads">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+            <div class="section-card">
+              <div class="section-header">
+                <h2>📈 Recent Activity</h2>
+              </div>
+              <div class="activity-list">
+                <div class="activity-item">
+                  <span class="activity-icon">🆕</span>
+                  <div class="activity-content">
+                    <p>Found 5 new leads in "Pool Services"</p>
+                    <span class="activity-time">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <span class="activity-icon">🛠️</span>
+                  <div class="activity-content">
+                    <p>Built demo site for Bob's Pool Service</p>
+                    <span class="activity-time">5 hours ago</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <span class="activity-icon">📧</span>
+                  <div class="activity-content">
+                    <p>Sent outreach email to 3 prospects</p>
+                    <span class="activity-time">1 day ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leads View -->
+        <div class="view" id="leads-view">
+          <div class="page-header">
+            <h1>Leads</h1>
+            <p class="subtitle">Potential clients needing website upgrades</p>
+          </div>
+
+          <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="new">New</button>
+            <button class="filter-btn" data-filter="contacted">Contacted</button>
+            <button class="filter-btn" data-filter="demo">Demo Built</button>
+            <button class="filter-btn" data-filter="archived">Archived</button>
+          </div>
+
+          <div class="leads-grid" id="leadsGrid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Builder View -->
+        <div class="view" id="builder-view">
+          <div class="page-header">
+            <h1>Site Builder</h1>
+            <p class="subtitle">Create demo websites for your leads</p>
+          </div>
+          
+          <div class="builder-workspace">
+            <div class="builder-sidebar">
+              <div class="builder-section">
+                <h3>Select Lead</h3>
+                <select id="leadSelect">
+                  <option value="">Choose a lead...</option>
+                </select>
+              </div>
+              
+              <div class="builder-section">
+                <h3>Template</h3>
+                <div class="template-grid">
+                  <div class="template-option active" data-template="modern">
+                    <div class="template-preview">🏢</div>
+                    <span>Modern Biz</span>
+                  </div>
+                  <div class="template-option" data-template="clean">
+                    <div class="template-preview">✨</div>
+                    <span>Clean Pro</span>
+                  </div>
+                  <div class="template-option" data-template="bold">
+                    <div class="template-preview">🔥</div>
+                    <span>Bold Impact</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="builder-section">
+                <h3>Colors</h3>
+                <div class="color-picker">
+                  <div class="color-option active" style="background: #0a3cd1;" data-color="#0a3cd1"></div>
+                  <div class="color-option" style="background: #06b6d4;" data-color="#06b6d4"></div>
+                  <div class="color-option" style="background: #8b5cf6;" data-color="#8b5cf6"></div>
+                  <div class="color-option" style="background: #f59e0b;" data-color="#f59e0b"></div>
+                  <div class="color-option" style="background: #10b981;" data-color="#10b981"></div>
+                  <div class="color-option" style="background: #ef4444;" data-color="#ef4444"></div>
+                </div>
+              </div>
+              
+              <button class="btn btn-primary btn-block" id="buildSiteBtn">
+                🚀 Build Demo Site
+              </button>
+            </div>
+            
+            <div class="builder-preview">
+              <div class="preview-header">
+                <span>Preview</span>
+                <div class="preview-devices">
+                  <button class="device-btn active">💻</button>
+                  <button class="device-btn">📱</button>
+                </div>
+              </div>
+              <div class="preview-frame">
+                <div class="preview-placeholder">
+                  <span>Select a lead and template to preview</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outreach View -->
+        <div class="view" id="outreach-view">
+          <div class="page-header">
+            <h1>Outreach</h1>
+            <p class="subtitle">Email templates and campaign management</p>
+          </div>
+
+          <div class="outreach-grid">
+            <div class="email-templates">
+              <h3>Email Templates</h3>
+              <div class="template-list">
+                <div class="email-template">
+                  <div class="template-header">
+                    <h4>Initial Outreach</h4>
+                    <span class="template-tag">Cold</span>
+                  </div>
+                  <p class="template-preview-text">"Hi [Name], I came across your website and noticed it could use a modern refresh..."</p>
+                  <button class="btn btn-sm" onclick="useTemplate('initial')">Use Template</button>
+                </div>
+                <div class="email-template">
+                  <div class="template-header">
+                    <h4>Demo Ready</h4>
+                    <span class="template-tag">Warm</span>
+                  </div>
+                  <p class="template-preview-text">"Hi [Name], I built a demo website for your business. Here's the link..."</p>
+                  <button class="btn btn-sm" onclick="useTemplate('demo')">Use Template</button>
+                </div>
+                <div class="email-template">
+                  <div class="template-header">
+                    <h4>Follow-up</h4>
+                    <span class="template-tag">Follow-up</span>
+                  </div>
+                  <p class="template-preview-text">"Hi [Name], just following up on my previous email about your website..."</p>
+                  <button class="btn btn-sm" onclick="useTemplate('followup')">Use Template</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="email-composer">
+              <h3>Compose Email</h3>
+              <div class="composer-fields">
+                <input type="text" placeholder="To:" id="emailTo">
+                <input type="text" placeholder="Subject:" id="emailSubject" value="Quick question about your website">
+                <textarea placeholder="Write your email..." id="emailBody" rows="12"></textarea>
+              </div>
+              <div class="composer-actions">
+                <button class="btn btn-secondary">Save Draft</button>
+                <button class="btn btn-primary">Send Email</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Revenue View -->
+        <div class="view" id="revenue-view">
+          <div class="page-header">
+            <h1>Revenue</h1>
+            <p class="subtitle">Track your agency earnings</p>
+          </div>
+
+          <div class="revenue-cards">
+            <div class="revenue-card big">
+              <span class="revenue-label">Monthly Recurring Revenue</span>
+              <span class="revenue-amount">$0</span>
+              <span class="revenue-sub">0 active clients</span>
+            </div>
+            <div class="revenue-card">
+              <span class="revenue-label">Total Revenue</span>
+              <span class="revenue-amount">$0</span>
+            </div>
+            <div class="revenue-card">
+              <span class="revenue-label">Pending Deals</span>
+              <span class="revenue-amount">$0</span>
+            </div>
+          </div>
+
+          <div class="pricing-suggestions">
+            <h3>💡 Suggested Pricing</h3>
+            <div class="pricing-cards">
+              <div class="pricing-card">
+                <h4>Setup Fee</h4>
+                <span class="price">$500-2,000</span>
+                <p>Initial website redesign</p>
+              </div>
+              <div class="pricing-card recommended">
+                <h4>Monthly Retainer</h4>
+                <span class="price">$99-299</span>
+                <p>Hosting + updates + support</p>
+              </div>
+              <div class="pricing-card">
+                <h4>Upsells</h4>
+                <span class="price">$50-500</span>
+                <p>SEO, content, ads management</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Lead Detail Modal -->
+  <div class="modal" id="leadModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalLeadName">Lead Name</h2>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="lead-detail-grid">
+          <div class="lead-screenshot">
+            <img id="modalScreenshot" src="" alt="Website screenshot">
+          </div>
+          <div class="lead-info">
+            <div class="info-row">
+              <span class="info-label">Website:</span>
+              <a id="modalWebsite" href="#" target="_blank"></a>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Industry:</span>
+              <span id="modalIndustry"></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Location:</span>
+              <span id="modalLocation"></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Status:</span>
+              <span id="modalStatus" class="status-badge"></span>
+            </div>
+            <div class="improvements">
+              <h4>🔍 Improvement Opportunities</h4>
+              <ul id="modalImprovements"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" onclick="archiveLead()">🗑️ Archive</button>
+          <button class="btn btn-primary" onclick="buildDemoSite()">🛠️ Build Demo Site</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
